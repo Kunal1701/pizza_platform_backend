@@ -44,7 +44,33 @@ They can also manage if restaurant is online or offline
 
 4. **Set up the database**
 
-    
+This project uses PostgreSQL as its database. Here's how you can set it up:
+
+1. Install PostgreSQL if you haven't already. You can download it from [here](https://www.postgresql.org/download/).
+
+2. Create a new PostgreSQL database. You can do this through the PostgreSQL interactive terminal:
+
+```bash
+psql -U postgres
+```
+Then, in the PostgreSQL interactive terminal, run:
+```
+CREATE DATABASE pizza;
+```
+
+3. Update the DATABASES setting in settings.py with your PostgreSQL database details:
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'pizza',
+        'USER': 'your_postgres_user',
+        'PASSWORD': 'your_postgres_password',
+        'HOST': 'localhost',
+    }
+}
+```
+
 
 5. **Apply migrations**
 
