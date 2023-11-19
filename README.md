@@ -64,7 +64,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'pizza',
-        'USER': 'your_postgres_user',
+        'USER': 'postgres',
         'PASSWORD': 'your_postgres_password',
         'HOST': 'localhost',
     }
