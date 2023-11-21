@@ -58,19 +58,24 @@ Then, in the PostgreSQL interactive terminal, run:
 CREATE DATABASE pizza;
 ```
 
-3. Update the DATABASES setting in settings.py with your PostgreSQL database details:
-```
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'pizza',
-        'USER': 'postgres',
-        'PASSWORD': 'your_postgres_password',
-        'HOST': 'localhost',
-    }
-}
-```
+3. Create a `.env-vars.sh` file in the project root directory with your database configuration.Then perform the following commands:
 
+    ```bash
+    echo 'export DB_ENGINE="django.db.backends.postgresql"' >> .env-vars.sh
+    echo 'export DB_NAME="pizza"' >> .env-vars.sh
+    echo 'export DB_USER="postgres"' >> .env-vars.sh
+    echo 'export DB_PASSWORD="your_password"' >> .env-vars.sh
+    echo 'export DB_HOST="localhost"' >> .env-vars.sh
+    echo 'export DB_PORT="5432"' >> .env-vars.sh
+    ```
+
+    Replace `"your_password"` with your actual database password.
+
+4. Source the `.env-vars.sh` file to set the environment variables.
+
+    ```bash
+    source .env-vars.sh
+    ```
 
 5. **Apply migrations**
 
@@ -118,7 +123,26 @@ All the API endpoints and their descriptions exported via postman is attached as
     cd pizza_delivery
     ```
 
-4. Build the Docker image. Replace the `${DB_ENGINE}`, `${DB_NAME}`, `${DB_USER}`, `${DB_PASSWORD}`, `${DB_HOST}`, and `${DB_PORT}` placeholders with your actual database configuration.
+4. Create a `.env-vars.sh` file in the project root directory with your database configuration.Then perform the following commands:
+
+    ```bash
+    echo 'export DB_ENGINE="django.db.backends.postgresql"' >> .env-vars.sh
+    echo 'export DB_NAME="pizza"' >> .env-vars.sh
+    echo 'export DB_USER="postgres"' >> .env-vars.sh
+    echo 'export DB_PASSWORD="your_password"' >> .env-vars.sh
+    echo 'export DB_HOST="localhost"' >> .env-vars.sh
+    echo 'export DB_PORT="5432"' >> .env-vars.sh
+    ```
+
+    Replace `"your_password"` with your actual database password.
+
+5. Source the `.env-vars.sh` file to set the environment variables.
+
+    ```bash
+    source .env-vars.sh
+    ```
+
+6. Build the Docker image. Replace the `${DB_ENGINE}`, `${DB_NAME}`, `${DB_USER}`, `${DB_PASSWORD}`, `${DB_HOST}`, and `${DB_PORT}` placeholders with your actual database configuration.
 
     ```bash
     docker build -t pizza_delivery:latest . -f Dockerfile \
@@ -130,7 +154,7 @@ All the API endpoints and their descriptions exported via postman is attached as
     --build-arg DB_PORT=${DB_PORT}
     ```
 
-5. Run the Docker container.
+7. Run the Docker container.
 
     ```bash
     docker run -p 8000:8000 pizza_delivery:latest
