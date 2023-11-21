@@ -69,7 +69,7 @@ CREATE DATABASE pizza;
     echo 'export DB_PORT="5432"' >> .env-vars.sh
     ```
 
-    Replace `"your_password"` with your actual database password.
+    Replace `your_password` with your actual database password.
 
 4. Source the `.env-vars.sh` file to set the environment variables.
 
