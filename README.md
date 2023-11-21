@@ -100,3 +100,38 @@ DATABASES = {
 ## API Endpoints
 
 All the API endpoints and their descriptions exported via postman is attached as a json file.
+
+
+## Setup with Docker
+
+1. Install Docker on your machine. You can download Docker from [here](https://www.docker.com/products/docker-desktop).
+
+2. Clone this repository to your local machine.
+
+    ```bash
+    git clone https://github.com/Kunal1701/pizza_platform_backend.git
+    ```
+
+3. Navigate to the project directory.
+
+    ```bash
+    cd pizza_delivery
+    ```
+
+4. Build the Docker image. Replace the `${DB_ENGINE}`, `${DB_NAME}`, `${DB_USER}`, `${DB_PASSWORD}`, `${DB_HOST}`, and `${DB_PORT}` placeholders with your actual database configuration.
+
+    ```bash
+    docker build -t pizza_delivery:latest . -f Dockerfile \
+    --build-arg DB_ENGINE=${DB_ENGINE} \
+    --build-arg DB_NAME=${DB_NAME} \
+    --build-arg DB_USER=${DB_USER} \
+    --build-arg DB_PASSWORD=${DB_PASSWORD} \
+    --build-arg DB_HOST=${DB_HOST} \
+    --build-arg DB_PORT=${DB_PORT}
+    ```
+
+5. Run the Docker container.
+
+    ```bash
+    docker run -p 8000:8000 pizza_delivery:latest
+    ```
